@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Design and Analysis of Algorithms Portfolio</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+  <body>
+    <header>
+        <h1 class ="me">Hi, I am Muskan</h1>
+		<img src="https://media.tenor.com/gaIjC5FV4Y8AAAAj/hug-hi.gif" alt="My Image"></header>
+              <h1>Design and Analysis of Algorithms Portfolio</h1>
+      <nav>
+        <ul>
+          <li><a href="#sorting">Sorting Algorithms</a></li>
+          <li><a href="#searching">Searching Algorithms</a></li>
+          <li><a href="#greedy">Greedy Algorithm</a></li>
+          <li><a href="#backtracking">Backtracking Algorithms</a></li>
+               </ul>
+      </nav>
+    
+    <main>
+  <section id="sorting">
+    <h2>Sorting Algorithms</h2>
+    <p>Here are some of the sorting algorithms I have studied:</p>
+    <ul>
+      <li>Bubble Sort</li>
+      <li>Selection Sort</li>
+      <li>Insertion Sort</li>
+      <li>Merge Sort</li>
+      <li>Quick Sort</li>
+    </ul>
+    <p>I have implemented the Bubble sort algorithm in C:</p>
+    <pre><code>
+        
+bubbleSort(array)
+    n = length(array)
+    for i = 0 to n-1
+        for j = 0 to n-i-1
+            if array[j] > array[j+1]
+                swap(array[j], array[j+1])
+    end for
+end for
+</code></pre>
+
+<p>I have implemented the Selection sort algorithm in C:</p>
+    <pre><code>
+for i = 0 to n-2 do
+    min_index = i
+    for j = i+1 to n-1 do
+        if arr[j] < arr[min_index] then
+            min_index = j
+    
+    // swap elements at i and min_index
+    temp = arr[i]
+    arr[i] = arr[min_index]
+    arr[min_index] = temp
+end for
+
+</code></pre>
+
+<p>I have implemented the Insertion sort algorithm in C:</p>
+    <pre><code>
+for i = 0 to n-2 do
+    min_index = i
+    for j = i+1 to n-1 do
+        if arr[j] < arr[min_index] then
+            min_index = j
+    
+    // swap elements at i and min_index
+    temp = arr[i]
+    arr[i] = arr[min_index]
+    arr[min_index] = temp
+end for
+
+</code></pre>
+
+<p>I have implemented the Merge sort algorithm in C:</p>
+    <pre><code>
+void merge(int arr[], int left, int middle, int right) {
+    int i, j, k;
+    int n1 = middle - left + 1;
+    int n2 = right - middle;
+
+    /* create temporary arrays */
+    int L[n1], R[n2];
+
+    /* copy data to temporary arrays L[] and R[] */
+    for (i = 0; i < n1; i++)
+        L[i] = arr[left + i];
+    for (j = 0; j < n2; j++)
+        R[j] = arr[middle + 1 + j];
+
+    /* merge the temporary arrays back into arr[left..right] */
+    i = 0; /* initial index of first subarray */
+    j = 0; /* initial index of second subarray */
+    k = left; /* initial index of merged subarray */
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k] = L[i];
+            i++;
+        }
+        else {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    /* copy the remaining elements of L[], if any */
+    while (i < n1) {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    /* copy the remaining elements of R[], if any */
+    while (j < n2) {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
+
+void merge_sort(int arr[], int left, int right) {
+    if (left < right) {
+        int middle = left + (right - left) / 2;
+
+        /* sort first and second halves */
+        merge_sort(arr, left, middle);
+        merge_sort(arr, middle + 1, right);
+
+        /* merge the sorted halves */
+        merge(arr, left, middle, right);
+    }
+}
+
+</code></pre>
+    <p>I have implemented the Quick Sort algorithm in C:</p>
+    <pre><code>
+void quickSort(int arr[], int low, int high) {
+    if (low < high) {
+        int pivot = partition(arr, low, high);
+        quickSort(arr, low, pivot - 1);
+        quickSort(arr, pivot + 1, high);
+    }
+}
+
+int partition(int arr[], int low, int high) {
+    int pivot = arr[high];
+    int i = (low - 1);
+
+    for (int j = low; j <= high - 1; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            swap(&arr[i], &arr[j]);
+        }
+    }
+    swap(&arr[i + 1], &arr[high]);
+    return (i + 1);
+}
+
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+</code></pre>
+</section>
+  <section id="searching">
+    <h2>Searching Algorithms</h2>
+    <p>Here are some of the searching algorithms I have studied:</p>
+    <ul>
+      <li>Linear Search</li>
+      <li>Binary Search</li>
+      <li>Breadth-First Search (BFS)</li>
+      <li>Depth-First Search (DFS)</li>
+    </ul>
+    <p>I have implemented the Linear Search algorithm in C:</p>
+    <pre><code>
+        function linear_search(array, value):
+        for each item in the array:
+            if item == value:
+                return index of item
+        return not found
+    </code></pre>
+<p>I have implemented the Binary Search algorithm in C:</p>
+    <pre><code>
+        function binary_search(array, value):
+        sort the array
+        set start_index = 0
+        set end_index = length of array - 1
+        while start_index <= end_index:
+            set mid_index = (start_index + end_index) / 2
+            if array[mid_index] == value:
+                return mid_index
+            else if array[mid_index] < value:
+                set start_index = mid_index + 1
+            else:
+                set end_index = mid_index - 1
+        return not found
+    </code></pre>
+
+    <p>I have implemented the Breadth-First Search (BFS) in C:</p>
+    <pre><code>
+        function binary_search(array, value):
+        sort the array
+        set start_index = 0
+        set end_index = length of array - 1
+        while start_index <= end_index:
+            set mid_index = (start_index + end_index) / 2
+            if array[mid_index] == value:
+                return mid_index
+            else if array[mid_index] < value:
+                set start_index = mid_index + 1
+            else:
+                set end_index = mid_index - 1
+        return not found
+    </code></pre>
+<p>I have implemented the Depth-First Search (DFS) in C:</p>
+<pre><code>
+    function dfs(graph, start_node, end_node):
+    create empty stack
+    add start_node to stack
+    create empty set for visited nodes
+    while stack is not empty:
+        set current_node = top node in stack
+        remove current_node from stack
+        if current_node == end_node:
+            return path from start_node to end_node
+        if current_node is not in visited set:
+            add current_node to visited set
+            for each neighbor of current_node:
+                add neighbor to stack
+                set neighbor's parent to current_node
+    return no path found
+</code></pre>
+  </section>
+<section id="greedy">
+    <h2>Greedy Approach</h2>
+    <p> The greedy algorithm starts with an empty solution set and then iteratively adds the best possible element to the solution set until the set is complete. The best possible element is chosen based on some criterion that maximizes or minimizes the objective function.</p>
+    <pre><code>
+        
+        GreedyAlgorithm(Input):
+        1. Initialize an empty solution set.
+        2. While the solution set is not complete:
+            a. Choose the best possible element to add to the solution set.
+            b. Add the chosen element to the solution set.
+        3. Return the complete solution set.
+    
+</code></pre>
+
+
+
+</section>
+<section id="backtracking">
+    <h2>Backtracking algorithm</h2>
+    <p> I have implemented the Backtracking algorithm</p>
+    <pre><code>
+        
+        BacktrackingAlgorithm(Input):
+        1. Initialize an empty solution vector.
+        2. Call the backtrack function with the solution vector as the current solution.
+        3. Return the complete solution vector.
+    
+    backtrack(solution):
+        1. If the current solution is complete:
+            a. Add the solution to the set of complete solutions.
+            b. Return.
+        2. For each possible candidate to extend the solution:
+            a. If the candidate is valid:
+                i. Add the candidate to the solution vector.
+                ii. Recursively call the backtrack function with the new solution vector.
+                iii. Remove the candidate from the solution vector.
+    
+    
+</code></pre>
+
+
+
+</section>
+</main>
+<footer>
+    <div class="container">
+      <p>Connect with me:</p>
+      <ul class="social-links">
+        <li><a href="https://github.com/muskan2911"><i class="fab fa-github"></i> GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/muskan-kaushik-90a908229/"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+      </ul>
+    </div>
+  </footer>
+  
+  </body>
+</html>
